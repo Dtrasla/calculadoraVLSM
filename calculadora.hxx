@@ -2,13 +2,13 @@
 
 
 
-vector< vector<bool> > devolverSubRed(vector< vector<bool> > redActual, int bitsMascaraActual, int nuevaMascara){
+vector< vector<bool> > devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int nuevaMascara){
 
 
 
 }
 
-
+/*
 vector<int> convertirACadenaDecimal(vector< vector<bool> > redBinaria){
     vector<int> decimal;
     vector< vector<bool> >::iterator it;
@@ -26,7 +26,7 @@ vector<int> convertirACadenaDecimal(vector< vector<bool> > redBinaria){
     }
 
 }
-
+*/
 
 vector<int> convertirACadenaDecimal(vector<bool> redBinaria){
     vector<int> decimal;

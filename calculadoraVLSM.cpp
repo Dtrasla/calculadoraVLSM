@@ -11,6 +11,11 @@ int main(){
     for(int i = 0; i<32; i++)
         red.push_back(prim[i]);
 
+    vector<int> decimal = convertirACadenaDecimal(red);
+    for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
+        cout << *it << " ";
+    }
+
 
     return 0; 
 }
