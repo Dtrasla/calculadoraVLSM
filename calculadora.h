@@ -2,6 +2,7 @@
 #define __CALCULADORA__H__
 #include <stdlib.h>
 #include <vector>
+#include <iostream>
 using namespace std;
 
 vector< vector<bool> > devolverSubRed(vector< vector<bool> > redActual, int bitsMascaraActual, int nuevaMascara);
