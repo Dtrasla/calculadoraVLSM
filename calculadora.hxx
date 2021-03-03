@@ -9,6 +9,7 @@ vector< vector<bool> > devolverSubRed(vector<bool> redActual, int bitsMascaraAct
 }
 
 //convierte cadenas binarias a redes de ipv4
+//recibe un vector booleano que representa toda la red
 vector<int> convertirACadenaDecimal(vector<bool> redBinaria){
     vector<int> decimal;
     vector<bool>::iterator it;
