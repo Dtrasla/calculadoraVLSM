@@ -9,9 +9,7 @@ vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int b
     int posicionActual = bitsNuevaMascara;
     bool val = false;
     for(vector<bool>::iterator it = redActual.begin() + bitsNuevaMascara-1; it!=redActual.end() && !val; ){
-        cout << "posicion: " << posicionActual << endl;
         if(posicionActual == bitsNuevaMascara && !(*it) && posicionActual >=bitsOriginales){
-            //cout << "cambio " << posicionActual <<endl;
             *it = true;
             val = true;
             ++it;
@@ -20,11 +18,10 @@ vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int b
         }
 
         else if( posicionActual >= bitsOriginales && posicionActual < bitsNuevaMascara && !(*it) ){
-           //cout << "cambio " << posicionActual <<endl;
             *it = true;
             val = true;
             ++it;
-            for(it; it != redActual.end(); it++) //reinicia todos los bits despues del que se cambio
+            for(it; it != redActual.end(); it++) 
                 *it = false;
         }
 
@@ -35,11 +32,6 @@ vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int b
         --posicionActual;
     }
 
-
-    /*
-    for(vector<bool>::iterator it=redActual.begin(); it != redActual.end(); ++it) 
-                *it = false;
-*/
     for(vector<bool>::iterator it = redActual.begin(); it != redActual.end(); ++it){
         if(*it)
             cout << "1";

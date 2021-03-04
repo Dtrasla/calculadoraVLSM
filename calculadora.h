@@ -11,7 +11,7 @@ vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int b
 
 vector<int> convertirACadenaDecimal(vector<bool> redBinaria);
 
-
+vector<int> devolverBroadcast(vector<bool> redBinaria, int bitsMascara);
 
 
 #include "calculadora.hxx"
