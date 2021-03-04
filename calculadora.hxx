@@ -23,9 +23,9 @@ vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int b
            //cout << "cambio " << posicionActual <<endl;
             *it = true;
             val = true;
-            for(it+2; it != redActual.end(); ++it) 
+            ++it;
+            for(it; it != redActual.end(); it++) //reinicia todos los bits despues del que se cambio
                 *it = false;
-
         }
 
         if(posicionActual<bitsOriginales)
