@@ -1,7 +1,7 @@
 #include "calculadora.h"
 
 
-
+//recibe como vector EL ULTIMO HOST de una red y calcula la subred a partir de eso
 vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int bitsNuevaMascara, int bitsOriginales){
     cout << "bits de la mascara original: " << bitsOriginales<<endl;
     cout << "bits de la mascara actual: " << bitsMascaraActual<<endl;
