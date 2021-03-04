@@ -58,14 +58,37 @@ vector<int> convertirACadenaDecimal(vector<bool> redBinaria){
             pot = 128;
             
         }
-
         if(*it)
             acum+= pot;
         pot = pot/2;
         octeto++;
-        //cout << acum << " ";
     }
     decimal.push_back(acum);
     return decimal;
 }
+
+
+vector<bool> convertirDecimalABinario(vector<int> red){
+    vector<bool> binario;
+    vector<int>::iterator it;
+    
+    for( it = red.begin(); it != red.end(); ++it){
+        for(int i = 1; i<=8;i++){
+            bool bi = (*it >> 8-i) & 1;
+            binario.push_back(bi);
+        }
+    }
+    
+
+
+    for(vector<bool>::iterator it = binario.begin(); it != binario.end(); ++it){
+        if(*it)
+            cout << "1";
+        else{
+            cout << "0";
+        }
+    }
+    return binario;
+}
+
 
