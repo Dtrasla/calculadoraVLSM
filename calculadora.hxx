@@ -2,10 +2,54 @@
 
 
 
-vector< vector<bool> > devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int nuevaMascara){
+vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int bitsNuevaMascara, int bitsOriginales){
+    cout << "bits de la mascara original: " << bitsOriginales<<endl;
+    cout << "bits de la mascara actual: " << bitsMascaraActual<<endl;
+    cout << "bits de la nueva subred: " << bitsNuevaMascara<<endl;
+    int posicionActual = bitsNuevaMascara;
+    bool val = false;
+    for(vector<bool>::iterator it = redActual.begin() + bitsNuevaMascara-1; it!=redActual.end() && !val; ){
+        cout << "posicion: " << posicionActual << endl;
+        if(posicionActual == bitsNuevaMascara && !(*it) && posicionActual >=bitsOriginales){
+            //cout << "cambio " << posicionActual <<endl;
+            *it = true;
+            val = true;
+            ++it;
+            for(it; it != redActual.end(); it++) //reinicia todos los bits despues del que se cambio
+                *it = false;
+        }
+
+        else if( posicionActual >= bitsOriginales && posicionActual < bitsNuevaMascara && !(*it) ){
+           //cout << "cambio " << posicionActual <<endl;
+            *it = true;
+            val = true;
+            for(it+2; it != redActual.end(); ++it) 
+                *it = false;
+
+        }
+
+        if(posicionActual<bitsOriginales)
+            val = true;
+
+        --it;
+        --posicionActual;
+    }
 
 
+    /*
+    for(vector<bool>::iterator it=redActual.begin(); it != redActual.end(); ++it) 
+                *it = false;
+*/
+    for(vector<bool>::iterator it = redActual.begin(); it != redActual.end(); ++it){
+        if(*it)
+            cout << "1";
+        else{
+            cout << "0";
+        }
+    }
+    cout << endl;
 
+    return redActual;
 }
 
 //convierte cadenas binarias a redes de ipv4
@@ -27,7 +71,7 @@ vector<int> convertirACadenaDecimal(vector<bool> redBinaria){
             acum+= pot;
         pot = pot/2;
         octeto++;
-        cout << acum << " ";
+        //cout << acum << " ";
     }
     decimal.push_back(acum);
     return decimal;
