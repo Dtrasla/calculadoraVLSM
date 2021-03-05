@@ -3,8 +3,8 @@
 
 //recibe como vector EL ULTIMO HOST de una red y calcula la subred a partir de eso
 vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int bitsNuevaMascara, int bitsOriginales){
-    cout << "bits de la mascara original: " << bitsOriginales<<endl;
-    cout << "bits de la mascara actual: " << bitsMascaraActual<<endl;
+    //cout << "bits de la mascara original: " << bitsOriginales<<endl;
+    //cout << "bits de la mascara actual: " << bitsMascaraActual<<endl;
     cout << "bits de la nueva subred: " << bitsNuevaMascara<<endl;
     int posicionActual = bitsNuevaMascara;
     bool val = false;
@@ -31,7 +31,7 @@ vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int b
         --it;
         --posicionActual;
     }
-
+    /*
     for(vector<bool>::iterator it = redActual.begin(); it != redActual.end(); ++it){
         if(*it)
             cout << "1";
@@ -39,7 +39,8 @@ vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int b
             cout << "0";
         }
     }
-    cout << endl;
+   
+    cout << endl;  */
 
     return redActual;
 }
@@ -67,7 +68,7 @@ vector<int> convertirACadenaDecimal(vector<bool> redBinaria){
     return decimal;
 }
 
-
+//convierte el vector con los cuatro octetos a binario
 vector<bool> convertirDecimalABinario(vector<int> red){
     vector<bool> binario;
     vector<int>::iterator it;
@@ -80,7 +81,7 @@ vector<bool> convertirDecimalABinario(vector<int> red){
     }
     
 
-
+/*
     for(vector<bool>::iterator it = binario.begin(); it != binario.end(); ++it){
         if(*it)
             cout << "1";
@@ -88,7 +89,22 @@ vector<bool> convertirDecimalABinario(vector<int> red){
             cout << "0";
         }
     }
+    */
     return binario;
 }
 
 
+vector<bool> devolverBroadcast(int mascara, vector<bool> red){
+    int posicion = 0;
+    vector<bool>::iterator it;
+    bool salir = false;
+    for(it = red.begin(); it != red.end() && !salir; ++it, posicion++){
+
+        if(posicion == mascara){
+            salir = true;
+                for(it; it != red.end(); it++) 
+                    *it = true;
+        }
+    }
+    return red;
+}

@@ -10,10 +10,9 @@ using namespace std;
 vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int bitsNuevaMascara, int bitsOriginales);
 
 vector<int> convertirACadenaDecimal(vector<bool> redBinaria);
-
 vector<int> devolverBroadcast(vector<bool> redBinaria, int bitsMascara);
 vector<bool> convertirDecimalABinario(vector<int> red);
-
+vector<bool> devolverBroadcast(int mascara, vector<bool> red);
 
 #include "calculadora.hxx"
 #endif //__CALCULADORA__H__
