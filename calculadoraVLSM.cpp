@@ -40,7 +40,7 @@ int main(){
         vector<int> subred = redOriginal;
         vector<bool> subredB = convertirDecimalABinario(redOriginal);
         for(int i = 0; i < subredes; i++){
-            
+            cout << endl << endl;
             
             int mascara = 32 - (bitsParaNumero(hostPorSubred[i]));
             if(i == 0){
@@ -51,6 +51,7 @@ int main(){
                 subred = convertirACadenaDecimal(subredB);
                 cout << "Broadcast 1: ";
                 imprimirRedDec(subred);
+                cout << endl << "Numero de hosts: " << sumaBits( bitsParaNumero (hostPorSubred[i]) );
                 cout << endl;
             }
             else{
@@ -63,6 +64,8 @@ int main(){
                 subred = convertirACadenaDecimal(subredB);
                 cout << "Broadcast " << i+1 << ": " ;
                 imprimirRedDec(subred);
+                cout << endl << "Numero de hosts: " << (sumaBits( bitsParaNumero (hostPorSubred[i])))-1 ;
+                cout << endl;
             }
 
 
