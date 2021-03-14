@@ -51,7 +51,7 @@ int main(){
                 subred = convertirACadenaDecimal(subredB);
                 cout << "Broadcast 1: ";
                 imprimirRedDec(subred);
-                cout << endl << "Numero de hosts: " << sumaBits( bitsParaNumero (hostPorSubred[i]) );
+                cout << endl << "Numero de hosts: " << (sumaBits( bitsParaNumero (hostPorSubred[i])))-1 ;
                 cout << endl;
             }
             else{
