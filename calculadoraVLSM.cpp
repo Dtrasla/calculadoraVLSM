@@ -4,127 +4,78 @@
 
 using namespace std;
 int main(){
-   vector<bool> red;
-    /*
-                     //primer        //segundo       //tercer        //cuarto
-    bool prim[32] = {1,1,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,1,1,0,0,0,1,1,1,1,1,1,1};
-    for(int i = 0; i<32; i++)
-        red.push_back(prim[i]);
-    vector<int> decimal;
-    decimal = convertirACadenaDecimal(red);
-    
-    for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
+
+
+
+    //MODO SERIO
+    vector<int> redOriginal;
+    int primerOcteto, segundoOcteto, tercerOcteto, cuartoOcteto, mascaraOriginal;
+    cout << "ingresar la red, separado por espacios: ";
+    cin >> primerOcteto >> segundoOcteto >> tercerOcteto >> cuartoOcteto;
+    redOriginal.push_back(primerOcteto);
+    redOriginal.push_back(segundoOcteto);
+    redOriginal.push_back(tercerOcteto);
+    redOriginal.push_back(cuartoOcteto);
+    imprimirRedDec(redOriginal);
+    cout << endl << "Mascara de la red: ";
+    cin >> mascaraOriginal;
+    int maximoHostsBits = (32-mascaraOriginal);
+    int subredes;
+    cout << endl << "Cuantas subredes se necesitan: ";
+    cin >> subredes;
+    int* hostPorSubred = new int [subredes];
+    int h;
+    for(int i = 0; i<subredes; i++){
+        cout << endl << "Hosts para la subred " << i+1 << ": ";
+        cin >> h;
+        h+=2; //para las dos adicionales que se requieren
+        hostPorSubred[i] = h;
     }
-    cout << endl;
-    for(vector<bool>::iterator it = red.begin(); it != red.end(); ++it){
-        if(*it)
-            cout << "1";
-        else{
-            cout << "0";
+    int hostsTotales = 0;
+    for(int i = 0; i < subredes; i++)
+        hostsTotales+=hostPorSubred[i];
+
+    
+    if(hostsTotales <= sumaBits(maximoHostsBits)){
+        vector<int> subred = redOriginal;
+        vector<bool> subredB = convertirDecimalABinario(redOriginal);
+        for(int i = 0; i < subredes; i++){
+            
+            
+            int mascara = 32 - (bitsParaNumero(hostPorSubred[i]));
+            if(i == 0){
+                cout << "Subred 1: ";
+                imprimirRedDec(redOriginal);
+                cout << endl << "Mascara de la subred 1: " << mascara << " bits"<<endl;
+                subredB = devolverBroadcast(mascara, subredB);
+                subred = convertirACadenaDecimal(subredB);
+                cout << "Broadcast 1: ";
+                imprimirRedDec(subred);
+                cout << endl;
+            }
+            else{
+                subredB = devolverSubRed(subredB, bitsParaNumero(hostPorSubred[i-1]), mascara, mascaraOriginal);
+                subred = convertirACadenaDecimal(subredB);
+                cout << "Subred " << i+1 << ": "; 
+                imprimirRedDec(subred);
+                cout << endl << "Mascara de la subred " << i+1 << ": " << mascara << " bits" <<endl;
+                subredB = devolverBroadcast(mascara, subredB);
+                subred = convertirACadenaDecimal(subredB);
+                cout << "Broadcast " << i+1 << ": " ;
+                imprimirRedDec(subred);
+            }
+
+
+
         }
     }
-
-
-
-    cout << endl;
-    vector<bool> segundaRed;
-    segundaRed = devolverSubRed(red, 25, 25, 21);
-    decimal = convertirACadenaDecimal(segundaRed);
-     for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
-    }
-    */
-
-    int redInicial[4] = {192,168,8,0};
-    int prefijoInicial = 23;
-    vector<int> redInic;
-    for(int i = 0; i<4; i++){
-        redInic.push_back(redInicial[i]);
+    else{
+        cout <<endl<< "esta red no puede acomodar "<< hostsTotales << " hosts";
     }
 
-
-    vector<bool> cadena;
-    cadena = convertirDecimalABinario(redInic);
-    vector<int> decimal;
-    decimal = convertirACadenaDecimal(cadena);
-    cout << "Red: ";
-     for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
-    }
-    cout << endl;
-    cadena = devolverBroadcast(prefijoInicial, cadena);
-    decimal = convertirACadenaDecimal(cadena);
-    cout << "broadcast: ";
-    for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
-    } 
-    cout << endl << endl;
-
-
-
-    cadena = devolverSubRed(cadena, 23, 24, 21);
-    decimal = convertirACadenaDecimal(cadena);
-    cout << "Red: ";
-    for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
-    } 
-    cout  << endl;
-    cadena = devolverBroadcast(24, cadena);
-    decimal = convertirACadenaDecimal(cadena);
-    cout << "broadcast: ";
-    for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
-    } 
-    cout  << endl << endl;
-
-
-    cadena = devolverSubRed(cadena, 24, 24, 21);
-    decimal = convertirACadenaDecimal(cadena);
-    cout << "Red: ";
-    for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
-    } 
-    cout  << endl;
-    cadena = devolverBroadcast(24, cadena);
-    decimal = convertirACadenaDecimal(cadena);
-    cout << "broadcast: ";
-    for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
-    } 
-    cout  << endl << endl;
-
-
-    cadena = devolverSubRed(cadena, 24, 25, 21);
-    decimal = convertirACadenaDecimal(cadena);
-    cout << "Red: ";
-    for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
-    } 
-    cout  << endl;
-    cadena = devolverBroadcast(25, cadena);
-    decimal = convertirACadenaDecimal(cadena);
-    cout << "broadcast: ";
-    for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
-    } 
-    cout  << endl << endl;
-
-
-    cadena = devolverSubRed(cadena, 25, 25, 21);
-    decimal = convertirACadenaDecimal(cadena);
-    cout << "Red: ";
-    for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
-    } 
-    cout  << endl;
-    cadena = devolverBroadcast(25, cadena);
-    decimal = convertirACadenaDecimal(cadena);
-    cout << "broadcast: ";
-    for(vector<int>::iterator it = decimal.begin(); it!=decimal.end(); ++it ){
-        cout << *it << ".";
-    } 
-    cout  << endl << endl;
+    
 
     return 0; 
 }
+
+

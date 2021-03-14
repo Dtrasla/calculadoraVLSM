@@ -13,6 +13,9 @@ vector<int> convertirACadenaDecimal(vector<bool> redBinaria);
 vector<int> devolverBroadcast(vector<bool> redBinaria, int bitsMascara);
 vector<bool> convertirDecimalABinario(vector<int> red);
 vector<bool> devolverBroadcast(int mascara, vector<bool> red);
-
+int sumaBits(int bits);
+int bitsParaNumero(int n);
+void imprimirRedBool(vector<bool> v);
+void imprimirRedDec(vector<int> v);
 #include "calculadora.hxx"
 #endif //__CALCULADORA__H__

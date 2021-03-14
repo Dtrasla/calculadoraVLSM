@@ -3,8 +3,6 @@
 
 //recibe como vector EL ULTIMO HOST de una red y calcula la subred a partir de eso
 vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int bitsNuevaMascara, int bitsOriginales){
-    //cout << "bits de la mascara original: " << bitsOriginales<<endl;
-    //cout << "bits de la mascara actual: " << bitsMascaraActual<<endl;
     cout << "bits de la nueva subred: " << bitsNuevaMascara<<endl;
     int posicionActual = bitsNuevaMascara;
     bool val = false;
@@ -31,16 +29,6 @@ vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int b
         --it;
         --posicionActual;
     }
-    /*
-    for(vector<bool>::iterator it = redActual.begin(); it != redActual.end(); ++it){
-        if(*it)
-            cout << "1";
-        else{
-            cout << "0";
-        }
-    }
-   
-    cout << endl;  */
 
     return redActual;
 }
@@ -80,16 +68,6 @@ vector<bool> convertirDecimalABinario(vector<int> red){
         }
     }
     
-
-/*
-    for(vector<bool>::iterator it = binario.begin(); it != binario.end(); ++it){
-        if(*it)
-            cout << "1";
-        else{
-            cout << "0";
-        }
-    }
-    */
     return binario;
 }
 
@@ -107,4 +85,40 @@ vector<bool> devolverBroadcast(int mascara, vector<bool> red){
         }
     }
     return red;
+}
+
+
+int sumaBits(int bits){
+    int pot = 1, acum=0;
+    for(int i = 0; i<bits; i++){
+        acum = acum+pot;
+        pot=pot*2;
+    }
+    return acum;
+}
+
+
+void imprimirRedBool(vector<bool> v){
+    for(vector<bool>::iterator it = v.begin(); it != v.end(); ++it){
+        if(*it)
+            cout << "1";
+        else{
+            cout << "0";
+        }
+    }
+}
+
+void imprimirRedDec(vector<int> v){
+    for(vector<int>::iterator it = v.begin(); it!=v.end(); ++it ){
+        cout << *it << ".";
+    } 
+}
+
+int bitsParaNumero(int n){
+    int i = 0;
+    while(n){
+        n = n>>1;
+        i++;
+    }
+    return i;
 }
