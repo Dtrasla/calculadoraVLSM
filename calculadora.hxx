@@ -3,7 +3,7 @@
 
 //recibe como vector LA DIRECCION DE BROADCAST de una red y calcula la subred a partir de eso
 vector<bool> devolverSubRed(vector<bool> redActual, int bitsMascaraActual, int bitsNuevaMascara, int bitsOriginales){
-    cout << "bits de la nueva subred: " << bitsNuevaMascara<<endl;
+    //cout << "bits de la nueva subred: " << bitsNuevaMascara<<endl;
     int posicionActual = bitsNuevaMascara;
     bool val = false;
     for(vector<bool>::iterator it = redActual.begin() + bitsNuevaMascara-1; it!=redActual.end() && !val; ){
