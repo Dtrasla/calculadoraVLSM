@@ -1,2 +1,3 @@
 # calculadoraVLSM
-En progreso
+para windows
+compilar: g++  -o ejecutable calculadoraVLSM.cpp
