@@ -1,7 +1,7 @@
 #include <iostream>
 #include "calculadora.h"
 #include <vector>
-
+#include <algorithm>
 using namespace std;
 int main(){
 
@@ -23,6 +23,7 @@ int main(){
     int subredes;
     cout << endl << "Cuantas subredes se necesitan: ";
     cin >> subredes;
+
     int* hostPorSubred = new int [subredes];
     int h;
     for(int i = 0; i<subredes; i++){
@@ -34,8 +35,9 @@ int main(){
     int hostsTotales = 0;
     for(int i = 0; i < subredes; i++)
         hostsTotales+=hostPorSubred[i];
-
+    std::sort(hostPorSubred, hostPorSubred+subredes, greater<int>());
     
+
     if(hostsTotales <= sumaBits(maximoHostsBits)){
         vector<int> subred = redOriginal;
         vector<bool> subredB = convertirDecimalABinario(redOriginal);
