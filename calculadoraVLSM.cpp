@@ -17,7 +17,7 @@ int main(){
     redOriginal.push_back(tercerOcteto);
     redOriginal.push_back(cuartoOcteto);
     imprimirRedDec(redOriginal);
-    cout << endl << "Mascara de la red: ";
+    cout << endl << "Cuantos bits cubre la mascara de la red: ";
     cin >> mascaraOriginal;
     int maximoHostsBits = (32-mascaraOriginal);
     int subredes;
