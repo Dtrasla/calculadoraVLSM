@@ -41,35 +41,37 @@ int main(){
     if(hostsTotales <= sumaBits(maximoHostsBits)){
         vector<int> subred = redOriginal;
         vector<bool> subredB = convertirDecimalABinario(redOriginal);
+        cout << "|Subred   | IP de la red             |  Broadcast         | Hosts     "  << endl;
+        cout << "----------------------------------------------------------------------"  << endl;
         for(int i = 0; i < subredes; i++){
-            cout << endl << endl;
             
             int mascara = 32 - (bitsParaNumero(hostPorSubred[i]));
             if(i == 0){
-                cout << "Subred 1: ";
+                cout << "|Subred 1 |";
                 imprimirRedDec(redOriginal);
-                cout << endl << "Mascara de la subred 1: " << mascara << " bits"<<endl;
+                cout  << "/" << mascara << "             ";
                 subredB = devolverBroadcast(mascara, subredB);
                 subred = convertirACadenaDecimal(subredB);
-                cout << "Broadcast 1: ";
+                //cout << "Broadcast 1: ";
                 imprimirRedDec(subred);
-                cout << endl << "Numero de hosts: " << (sumaBits( bitsParaNumero (hostPorSubred[i])))-1 ;
-                cout << endl;
+                //cout << endl << "Numero de hosts: " << (sumaBits( bitsParaNumero (hostPorSubred[i])))-1 ;
+                cout << "        " <<(sumaBits( bitsParaNumero (hostPorSubred[i])))-1;
             }
             else{
                 subredB = devolverSubRed(subredB, bitsParaNumero(hostPorSubred[i-1]), mascara, mascaraOriginal);
                 subred = convertirACadenaDecimal(subredB);
-                cout << "Subred " << i+1 << ": "; 
+                cout << "|Subred " << i+1 << " |" ; 
                 imprimirRedDec(subred);
-                cout << endl << "Mascara de la subred " << i+1 << ": " << mascara << " bits" <<endl;
+                cout <<  "/"  << mascara <<  "             ";
                 subredB = devolverBroadcast(mascara, subredB);
                 subred = convertirACadenaDecimal(subredB);
-                cout << "Broadcast " << i+1 << ": " ;
+                //cout << "Broadcast " << i+1 << ": " ;
                 imprimirRedDec(subred);
-                cout << endl << "Numero de hosts: " << (sumaBits( bitsParaNumero (hostPorSubred[i])))-1 ;
-                cout << endl;
+                //cout << endl << "Numero de hosts: " << (sumaBits( bitsParaNumero (hostPorSubred[i])))-1 ;
+                cout <<"      " <<(sumaBits( bitsParaNumero (hostPorSubred[i])))-1;
             }
-
+            cout << endl;
+            cout << "----------------------------------------------------------------------"  << endl;
         }
     }
     else{
