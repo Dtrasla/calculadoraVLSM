@@ -1,3 +1,4 @@
 # calculadoraVLSM
 para windows
-compilar: g++  -o ejecutable calculadoraVLSM.cpp
+
+compilar la interfaz: g++  -o ejecutable calculadoraVLSM.cpp
