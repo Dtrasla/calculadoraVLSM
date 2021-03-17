@@ -30,7 +30,8 @@ int main(){
         cout << endl << "Hosts para la subred " << i+1 << ": ";
         cin >> h;
         //h+=2; //para las dos adicionales que se requieren
-        hostPorSubred[i] = h;
+        hostPorSubred[i] = h+1;
+        //cout << bitsParaNumero(h) << endl;
     }
     int hostsTotales = 0;
     for(int i = 0; i < subredes; i++)
