@@ -29,9 +29,7 @@ int main(){
     for(int i = 0; i<subredes; i++){
         cout << endl << "Hosts para la subred " << i+1 << ": ";
         cin >> h;
-        //h+=2; //para las dos adicionales que se requieren
         hostPorSubred[i] = h+1;
-        //cout << bitsParaNumero(h) << endl;
     }
     int hostsTotales = 0;
     for(int i = 0; i < subredes; i++)
@@ -53,9 +51,7 @@ int main(){
                 cout  << "/" << mascara << "             ";
                 subredB = devolverBroadcast(mascara, subredB);
                 subred = convertirACadenaDecimal(subredB);
-                //cout << "Broadcast 1: ";
                 imprimirRedDec(subred);
-                //cout << endl << "Numero de hosts: " << (sumaBits( bitsParaNumero (hostPorSubred[i])))-1 ;
                 cout << "        " <<(sumaBits( bitsParaNumero (hostPorSubred[i])))-1;
             }
             else{
@@ -66,9 +62,7 @@ int main(){
                 cout <<  "/"  << mascara <<  "             ";
                 subredB = devolverBroadcast(mascara, subredB);
                 subred = convertirACadenaDecimal(subredB);
-                //cout << "Broadcast " << i+1 << ": " ;
                 imprimirRedDec(subred);
-                //cout << endl << "Numero de hosts: " << (sumaBits( bitsParaNumero (hostPorSubred[i])))-1 ;
                 cout <<"      " <<(sumaBits( bitsParaNumero (hostPorSubred[i])))-1;
             }
             cout << endl;
