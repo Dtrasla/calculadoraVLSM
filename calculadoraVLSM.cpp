@@ -7,7 +7,7 @@ int main(){
 
 
 
-    //MODO SERIO
+    //INTERFAZ DE LA APLICACION -- PARA LOS CALCULOS VER CALCULADORA.H
     vector<int> redOriginal;
     int primerOcteto, segundoOcteto, tercerOcteto, cuartoOcteto, mascaraOriginal;
     cout << "ingresar la red, separado por espacios: ";
